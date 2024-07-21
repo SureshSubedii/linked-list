@@ -26,6 +26,21 @@ class DoublyLinkedList{
         this.tail.next = newNode
         this.tail= newNode
     }
+    prepend(val){
+        let newNode = new Node(val)
+
+        if(!this.head){
+            this.head= newNode
+            this.tail= newNode
+            return
+
+        }
+        newNode.next = this.head
+        this.head.prev = newNode
+        this.head = newNode
+
+
+    }
     showData(){
         if(this.head){
             let curr =  this.head
@@ -42,6 +57,9 @@ let list = new  DoublyLinkedList()
 list.addItem(10)
 list.addItem(20)
 list.addItem(40)
+list.prepend(60)
+
 
 list.showData()
+console.log(list)
 
