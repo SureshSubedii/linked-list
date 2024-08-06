@@ -10,8 +10,7 @@ const sortList = (list)=> {
     if(!list || !list.next) return list
     let slow = list
     let fast = list
-    let dummy = new ListNode(0, list)
-    let prev = dummy
+    let prev = new ListNode(0, list)
     while(fast && fast.next){
         slow = slow.next
         fast = fast.next?.next || null
