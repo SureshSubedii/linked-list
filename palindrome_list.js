@@ -1,32 +1,31 @@
-const reverseList =(list)=>{
-    let prev = null
-    let current= list
-        while(current){
-            let next = current.next
-             current.next = prev
-             prev = current
-             current = next
-        }
-        return prev
+var isPalindrome = function(head) {
+    if(!head || !head.next) return true
+    let current = head
+    let fast = current.next.next
+    let slow = current
+    while(fast){
+        slow = slow.next
+        fast = fast.next?.next || null
+    }
+    let secondHalf = reverse(slow.next)
+    while(secondHalf){
+        if(secondHalf.val !== current.val) return false
+        secondHalf = secondHalf.next
+        current = current.next
 
     }
-    const isPalindrome = (head)=> {
-        if (head.next == null) return true
-        let fast = head
-        let slow = head
+    return true
     
-        while(fast){
-            fast = fast.next?.next
-            slow = slow.next
-            
-        }
-        let secondHalf = reverseList(slow) 
-        while(secondHalf){
-            if(secondHalf.val !=head.val) return false
-            secondHalf = secondHalf.next
-            head = head.next
-        }
-        return true
-    
-    
+};
+
+const reverse = (list) => {
+    let prev = null
+    let current = list
+    while(current){
+        let next = current.next
+        current.next = prev
+        prev = current
+        current = next
     }
+    return prev
+}
