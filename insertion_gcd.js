@@ -5,17 +5,15 @@
 
  
 var insertGreatestCommonDivisors = function(head) {
-    const findGcd = (first, second) => {
-        let min = Math.min(first, second) / 2
-        if( first % second === 0) return second
-        if(second % first  === 0 ) return first
-        let gcd = 1
-        for(let i = 2; i <= min ; i ++){
-            if(!(first % i) && !(second  % i)) gcd = i
-
-        }
-        return gcd
+    
+const findGcd = (a, b) => {
+    while (b !== 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
     }
+    return a;
+};
     let current = head
     while(current.next){
         let next = current.next
