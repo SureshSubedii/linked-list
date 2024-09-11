@@ -24,3 +24,31 @@ var insertionSortList = function (head) {
     return result
 
 };
+// Optimized
+var insertionSortList = function (head) {
+    let current = head
+    let sorted = null
+    while(current){
+        let next = current.next
+        sorted = insert(sorted, current)
+        current = next
+    }
+    return sorted
+
+
+};
+const insert = (sorted, node) =>{
+    if(!sorted || sorted.val > node.val){
+        node.next = sorted
+        return node
+    }
+    let current = sorted
+
+    while(current.next && current.next.val < node.val){
+        current = current.next
+    }
+
+    node.next = current.next
+    current.next = node
+    return sorted
+}
